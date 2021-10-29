@@ -1,10 +1,10 @@
-package com.example.myapplication.ui
+package com.accelerex.swagger.ui
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.example.myapplication.R
-import com.example.myapplication.databinding.FragmentPaymentStatusBinding
+import com.accelerex.swagger.R
+import com.accelerex.swagger.databinding.FragmentPaymentStatusBinding
 
 class PaymentStatusFragment : Fragment(R.layout.fragment_payment_status) {
 
@@ -12,8 +12,7 @@ class PaymentStatusFragment : Fragment(R.layout.fragment_payment_status) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val binding = FragmentPaymentStatusBinding.bind(view)
-        fragmentPaymentStatusBinding = binding
+        fragmentPaymentStatusBinding = FragmentPaymentStatusBinding.bind(view)
     }
 
     override fun onDestroyView() {
