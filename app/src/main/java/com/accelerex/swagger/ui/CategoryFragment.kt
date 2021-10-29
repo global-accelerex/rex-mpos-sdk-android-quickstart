@@ -1,4 +1,4 @@
-package com.example.myapplication.ui
+package com.accelerex.swagger.ui
 
 import android.os.Bundle
 import android.view.View

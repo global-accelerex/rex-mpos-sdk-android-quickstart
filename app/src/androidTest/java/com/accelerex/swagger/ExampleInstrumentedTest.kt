@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.accelerex.swagger
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
