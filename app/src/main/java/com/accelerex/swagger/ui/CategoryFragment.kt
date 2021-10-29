@@ -3,8 +3,8 @@ package com.accelerex.swagger.ui
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.example.myapplication.R
-import com.example.myapplication.databinding.FragmentCategoryBinding
+import com.accelerex.swagger.R
+import com.accelerex.swagger.databinding.FragmentCategoryBinding
 
 
 class CategoryFragment : Fragment(R.layout.fragment_category) {
@@ -13,8 +13,7 @@ class CategoryFragment : Fragment(R.layout.fragment_category) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val binding = FragmentCategoryBinding.bind(view)
-        fragmentCategoryBinding = binding
+        fragmentCategoryBinding = FragmentCategoryBinding.bind(view)
     }
 
     override fun onDestroyView() {
