@@ -1,10 +1,10 @@
-package com.example.myapplication.ui
+package com.accelerex.swagger.ui
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.example.myapplication.R
-import com.example.myapplication.databinding.FragmentLoginBinding
+import com.accelerex.swagger.R
+import com.accelerex.swagger.databinding.FragmentLoginBinding
 
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
@@ -13,9 +13,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // why not just inline binding
-        val binding = FragmentLoginBinding.bind(view)
-        fragmentLoginBinding = binding
+        fragmentLoginBinding = FragmentLoginBinding.bind(view)
     }
 
     override fun onDestroyView() {
