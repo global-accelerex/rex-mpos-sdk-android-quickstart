@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.globalaccelerex.mpossdksample.ui.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_categoryFragment2"
+            app:destination="@id/categoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.globalaccelerex.mpossdksample.ui.CategoryFragment"
+        android:label="fragment_category"
+        tools:layout="@layout/fragment_category">
+        <action
+            android:id="@+id/action_categoryFragment2_to_clothFragment"
+            app:destination="@id/clothFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/clothFragment"
+        android:name="com.globalaccelerex.mpossdksample.ui.ClothFragment"
+        android:label="fragment_cloth"
+        tools:layout="@layout/fragment_cloth">
+        <action
+            android:id="@+id/action_clothFragment_to_clothDetailsFragment"
+            app:destination="@id/clothDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/clothDetailsFragment"
+        android:name="com.globalaccelerex.mpossdksample.ui.ClothDetailsFragment"
+        android:label="fragment_cloth_details"
+        tools:layout="@layout/fragment_cloth_details">
+        <action
+            android:id="@+id/action_clothDetailsFragment_to_paymentStatusFragment"
+            app:destination="@id/paymentStatusFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentStatusFragment"
+        android:name="com.globalaccelerex.mpossdksample.ui.PaymentStatusFragment"
+        android:label="fragment_payment_status"
+        tools:layout="@layout/fragment_payment_status" />
+</navigation>
