@@ -1,10 +1,10 @@
-package com.accelerex.swagger.ui
+package com.globalaccelerex.mpossdksample.ui
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.accelerex.swagger.R
-import com.accelerex.swagger.databinding.FragmentPaymentStatusBinding
+import com.globalaccelerex.mpossdksample.R
+import com.globalaccelerex.mpossdksample.databinding.FragmentPaymentStatusBinding
 
 class PaymentStatusFragment : Fragment(R.layout.fragment_payment_status) {
 

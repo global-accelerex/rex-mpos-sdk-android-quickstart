@@ -6,7 +6,7 @@
     app:startDestination="@id/loginFragment">
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.accelerex.swagger.ui.LoginFragment"
+        android:name="com.globalaccelerex.mpossdksample.ui.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login">
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/categoryFragment"
-        android:name="com.accelerex.swagger.ui.CategoryFragment"
+        android:name="com.globalaccelerex.mpossdksample.ui.CategoryFragment"
         android:label="fragment_category"
         tools:layout="@layout/fragment_category">
         <action
@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/clothFragment"
-        android:name="com.accelerex.swagger.ui.ClothFragment"
+        android:name="com.globalaccelerex.mpossdksample.ui.ClothFragment"
         android:label="fragment_cloth"
         tools:layout="@layout/fragment_cloth">
         <action
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/clothDetailsFragment"
-        android:name="com.accelerex.swagger.ui.ClothDetailsFragment"
+        android:name="com.globalaccelerex.mpossdksample.ui.ClothDetailsFragment"
         android:label="fragment_cloth_details"
         tools:layout="@layout/fragment_cloth_details">
         <action
@@ -42,7 +42,7 @@
     </fragment>
     <fragment
         android:id="@+id/paymentStatusFragment"
-        android:name="com.accelerex.swagger.ui.PaymentStatusFragment"
+        android:name="com.globalaccelerex.mpossdksample.ui.PaymentStatusFragment"
         android:label="fragment_payment_status"
         tools:layout="@layout/fragment_payment_status" />
 </navigation>

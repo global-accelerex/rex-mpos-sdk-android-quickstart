@@ -1,10 +1,10 @@
-package com.accelerex.swagger.ui
+package com.globalaccelerex.mpossdksample.ui
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.accelerex.swagger.R
-import com.accelerex.swagger.databinding.FragmentClothBinding
+import com.globalaccelerex.mpossdksample.R
+import com.globalaccelerex.mpossdksample.databinding.FragmentClothBinding
 
 class ClothFragment : Fragment(R.layout.fragment_cloth) {
     private var fragmentClothBinding: FragmentClothBinding? = null

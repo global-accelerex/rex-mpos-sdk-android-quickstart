@@ -1,4 +1,4 @@
-package com.accelerex.swagger
+package com.globalaccelerex.mpossdksample
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry

@@ -1,4 +1,4 @@
-package com.accelerex.swagger
+package com.globalaccelerex.mpossdksample
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
