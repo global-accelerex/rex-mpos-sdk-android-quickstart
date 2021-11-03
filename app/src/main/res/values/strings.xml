@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Rex MPOS SDK Sample</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+    <string name="button_sign_in">Sign in</string>
+    <string name="text_forgot_password">Forgot password?</string>
+    <string name="sign_in_message">Hello, sign in to your account</string>
+    <string name="text_sign_in_social_media">Or Sign in using social media</string>
+    <string name="text_sign_in_signup">Don\'t have an account? <b>Sign up</b></string>
+
+    <string name="application_logo">Application Logo</string>
+    <string name="image_click_description">a click on the image lets us sign up using this method</string>
 </resources>
