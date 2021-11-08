@@ -10,4 +10,55 @@
 
     <string name="application_logo">Application Logo</string>
     <string name="image_click_description">a click on the image lets us sign up using this method</string>
+    <string name="item_image">Item\'s image</string>
+
+
+<!--    Catalog Item's Prices -->
+    <string name="point_one_naira">0.1</string>
+    <string name="point_two_naira">0.2</string>
+    <string name="point_three_naira">0.3</string>
+
+<!--    Catalog Item's Label -->
+
+
+    <!--  Clothes  -->
+    <string name="adidas_sleeveless_outfit_black">Adidas Sleeveless (Black)</string>
+    <string name="adidas_sleeveless_outfit_red">Adidas Sleeveless (Red)</string>
+    <string name="adidas_sleeveless_outfit_white">Adidas Sleeveless (White)</string>
+
+    <string name="lacoste_sleeveless_outfit_yellow">Lacoste Sleeveless (Yellow)</string>
+    <string name="lacoste_sleeveless_outfit_red">Lacoste Sleeveless (Red)</string>
+    <string name="lacoste_sleeveless_outfit_white">Lacoste Sleeveless (White)</string>
+
+    <string name="vasace_outfit_black">Vasace Outfit (Black Top)</string>
+    <string name="vasace_outfit_red">Vasace Outfit (Red Top)</string>
+    <string name="versace_outfit_white">Vasace Outfit (White Top)</string>
+
+    <!--  Shoes  -->
+    <string name="asics_sneaker_one">Asics Sneakers (Grey)</string>
+    <string name="asics_sneaker_two">Asics Sneakers (Grey with Lemon Strips)</string>
+
+    <string name="caterpillar_boot">Caterpillar Boots (Drab)</string>
+
+    <string name="hilfiger_sneaker">Hilfiger Sneakers (Off White)</string>
+
+    <!--  Belts-->
+    <string name="box_leather_black">Leather Belt (Black)</string>
+    <string name="box_leather_brown">Leather Belt (Black)</string>
+
+    <string name="twisted_x_leather_brown">Twisted X Leather Belt (Brown)</string>
+    <string name="twisted_x_leather_light_dark_brown">Twisted X Leather Belt (Light and Dark Brown)</string>
+
+    <!--  Watches  -->
+    <string name="cartier_watch_black">Cartier Watch (Black)</string>
+    <string name="cartier_watch_gold">Cartier Watch (Gold)</string>
+
+    <string name="dw_watch_white"> DW Watch (White Silver) </string>
+
+    <string name="fenix_watch">Fenix Watch (Black Leather)</string>
+
+    <string name="rodd_watch_brown">Rodd Watch (Brown Leather)</string>
+    <string name="rodd_watch_blue">Rodd Watch (Blue Leather)</string>
+    <string name="rodd_watch_black">Rodd Watch (Black Leather)</string>
+
 </resources>
