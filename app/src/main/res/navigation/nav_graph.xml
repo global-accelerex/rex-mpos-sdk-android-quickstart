@@ -3,23 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/catalogFragment">
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.globalaccelerex.mpossdksample.ui.LoginFragment"
+        android:label="Login"
         tools:layout="@layout/fragment_login">
         <action
-            android:id="@+id/action_loginFragment_to_categoryFragment2"
-            app:destination="@id/categoryFragment" />
+            android:id="@+id/action_loginFragment_to_catalogFragment"
+            app:destination="@id/catalogFragment" />
     </fragment>
     <fragment
-        android:id="@+id/categoryFragment"
-        android:name="com.globalaccelerex.mpossdksample.ui.CategoryFragment"
-        android:label="fragment_category"
-        tools:layout="@layout/fragment_category">
+        android:id="@+id/catalogFragment"
+        android:name="com.globalaccelerex.mpossdksample.ui.CatalogFragment"
+        android:label="Catalog"
+        tools:layout="@layout/fragment_catalog">
         <action
-            android:id="@+id/action_categoryFragment2_to_clothFragment"
+            android:id="@+id/action_catalogFragment_to_clothFragment"
             app:destination="@id/clothFragment" />
+        <action
+            android:id="@+id/action_catalogFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/clothFragment"
