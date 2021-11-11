@@ -6,5 +6,6 @@ import androidx.annotation.StringRes
 data class CatalogItem(
     @StringRes val stringResourceTitle: Int,
     @DrawableRes val imageResourceId: Int,
-    @StringRes val stringResourcePrice: Int
+    @StringRes val stringResourcePrice: Int,
+    var clicks: Int = 0
 )

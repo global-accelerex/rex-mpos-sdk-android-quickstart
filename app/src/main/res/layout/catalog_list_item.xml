@@ -23,25 +23,36 @@
 
         <TextView
             android:id="@+id/catalog_item_title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="8dp"
+            android:ellipsize="end"
             android:padding="16dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            app:layout_constraintStart_toStartOf="@+id/catalog_item_image"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            app:layout_constraintEnd_toStartOf="@+id/catalog_item_price"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/catalog_item_image"
             tools:text="DW Watch" />
 
         <TextView
             android:id="@+id/catalog_item_price"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:padding="16dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintBaseline_toBaselineOf="@id/catalog_item_title"
-            app:layout_constraintEnd_toEndOf="@+id/catalog_item_image"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/catalog_item_image"
+            app:layout_constraintEnd_toStartOf="@+id/add_to_cart"
             tools:text="@string/point_one_naira" />
+
+        <Button
+            android:id="@+id/add_to_cart"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/add"
+            app:layout_constraintBaseline_toBaselineOf="@+id/catalog_item_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="@string/remove" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
