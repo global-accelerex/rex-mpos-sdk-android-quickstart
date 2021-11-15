@@ -19,33 +19,15 @@
         android:label="Catalog"
         tools:layout="@layout/fragment_catalog">
         <action
-            android:id="@+id/action_catalogFragment_to_clothFragment"
-            app:destination="@id/clothFragment" />
+            android:id="@+id/action_catalogFragment_to_checkoutFragment"
+            app:destination="@id/checkoutFragment" />
         <action
             android:id="@+id/action_catalogFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
     <fragment
-        android:id="@+id/clothFragment"
-        android:name="com.globalaccelerex.mpossdksample.ui.ClothFragment"
-        android:label="fragment_cloth"
-        tools:layout="@layout/fragment_cloth">
-        <action
-            android:id="@+id/action_clothFragment_to_clothDetailsFragment"
-            app:destination="@id/clothDetailsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/clothDetailsFragment"
-        android:name="com.globalaccelerex.mpossdksample.ui.ClothDetailsFragment"
-        android:label="fragment_cloth_details"
-        tools:layout="@layout/fragment_cloth_details">
-        <action
-            android:id="@+id/action_clothDetailsFragment_to_paymentStatusFragment"
-            app:destination="@id/paymentStatusFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/paymentStatusFragment"
-        android:name="com.globalaccelerex.mpossdksample.ui.PaymentStatusFragment"
-        android:label="fragment_payment_status"
-        tools:layout="@layout/fragment_payment_status" />
+        android:id="@+id/checkoutFragment"
+        android:name="com.globalaccelerex.mpossdksample.ui.CheckoutFragment"
+        android:label="Checkout"
+        tools:layout="@layout/fragment_checkout"/>
 </navigation>
