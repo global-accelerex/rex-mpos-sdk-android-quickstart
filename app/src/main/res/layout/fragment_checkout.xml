@@ -1,13 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.CheckoutFragment">
 
-    <Button
-        android:id="@+id/pay_button"
+    <TextView
+        android:id="@+id/your_order_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/pay" />
-</FrameLayout>
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/your_order"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/item_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/item"
+        app:layout_constraintStart_toStartOf="@+id/your_order_text"
+        app:layout_constraintTop_toBottomOf="@+id/your_order_text" />
+
+    <TextView
+        android:id="@+id/price_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="@string/price"
+        app:layout_constraintBaseline_toBaselineOf="@+id/item_text"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@id/real_total"
+        app:layout_constraintEnd_toEndOf="@+id/price_text"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/item_text"
+        app:layout_constraintTop_toBottomOf="@+id/item_text"
+        tools:listitem="@layout/checkout_list_item" />
+
+    <TextView
+        android:id="@+id/total_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/total"
+        app:layout_constraintBottom_toTopOf="@+id/pay_button"
+        app:layout_constraintEnd_toStartOf="@+id/real_total"
+        app:layout_constraintHorizontal_bias="0.89"
+        app:layout_constraintStart_toStartOf="@+id/recyclerView"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+
+    <TextView
+        android:id="@+id/real_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="@string/point_one_naira"
+        app:layout_constraintBaseline_toBaselineOf="@+id/total_text"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerView"
+        tools:text="@string/point_one_naira" />
+
+    <Button
+        android:id="@+id/pay_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/pay"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.427"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/price_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="363dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
