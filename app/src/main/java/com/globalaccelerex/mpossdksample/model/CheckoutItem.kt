@@ -6,5 +6,5 @@ data class CheckoutItem(
     @StringRes val stringResourceTitle: Int,
 //    val totalSingularItemOrdered: Int,
 //    val totalItemPrice: Double
-    val itemPrice: Double
+    @StringRes val stringResourcePrice: Int,
     )

@@ -4,8 +4,8 @@ import com.globalaccelerex.mpossdksample.R
 import com.globalaccelerex.mpossdksample.model.CatalogItem
 
 object DataSource {
-    fun loadCatalogListItems(): List<CatalogItem> {
-        return listOf(
+    fun loadCatalogListItems(): MutableList<CatalogItem> {
+        return mutableListOf(
             // Clothes
             CatalogItem(
                 R.string.adidas_sleeveless_outfit_black,
