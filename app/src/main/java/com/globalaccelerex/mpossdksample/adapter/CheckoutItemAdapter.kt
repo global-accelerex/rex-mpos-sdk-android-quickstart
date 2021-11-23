@@ -1,6 +1,7 @@
 package com.globalaccelerex.mpossdksample.adapter
 
 import android.content.Context
+import android.content.res.Resources
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -15,22 +16,21 @@ import java.text.NumberFormat
 import java.util.*
 
 class CheckoutListAdapter(
-    private val context: Context,
 ) : ListAdapter<CheckoutItem, CheckoutListAdapter.CheckoutViewHolder>(DiffCallback) {
 
     inner class CheckoutViewHolder(view: View) :
 //    inner class CheckoutViewHolder(private var binding: CheckoutListItemBinding) :
         RecyclerView.ViewHolder(view) {
-
+        private val resources: Resources = view.context.resources
         val item: TextView = view.findViewById(R.id.item_content)
         val price: TextView = view.findViewById(R.id.price_content)
 
         fun bind(checkoutItem: CheckoutItem) {
 //            binding.apply {
-            item.text = context.resources.getText(checkoutItem.stringResourceTitle)
+            item.text = resources.getText(checkoutItem.stringResourceTitle)
 //                quantityContent.text = checkoutItem.totalSingularItemOrdered.toString()
             price.text = NumberFormat.getCurrencyInstance(Locale("en", "NG"))
-                .format(context.resources.getString(checkoutItem.stringResourcePrice).toBigDecimal())
+                .format(resources.getString(checkoutItem.stringResourcePrice).toBigDecimal())
             Log.d("CheckoutListAdapter", price.text.toString())
 //            }
         }

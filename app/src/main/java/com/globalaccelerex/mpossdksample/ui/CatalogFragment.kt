@@ -35,13 +35,11 @@ class CatalogFragment : Fragment(R.layout.fragment_catalog) {
         super.onViewCreated(view, savedInstanceState)
         _fragmentCatalogBinding = FragmentCatalogBinding.bind(view)
 
-        adapter = CatalogItemAdapter(
-            requireContext(),
-            mutableListOf()
-        ) { index ->
+        adapter = CatalogItemAdapter { index ->
 
             // update item
             viewModel.updateItem(index)
+            adapter.notifyItemChanged(index)
 
         }
 
@@ -58,8 +56,8 @@ class CatalogFragment : Fragment(R.layout.fragment_catalog) {
                 // Initialize data.
                 val recyclerView = fragmentCatalogBinding.recyclerView
                 fragmentCatalogBinding.recyclerView.adapter = adapter
-                    viewModel.itemsList.observe(viewLifecycleOwner) { catalogItemList ->
-                        adapter.setList(catalogItemList)
+                viewModel.itemsList.observe(viewLifecycleOwner) { catalogItemList ->
+                    catalogItemList?.let(adapter::submitList)
                 }
                 fragmentCatalogBinding.recyclerView.layoutManager =
                     LinearLayoutManager(requireContext())

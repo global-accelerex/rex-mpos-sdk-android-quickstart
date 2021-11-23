@@ -30,7 +30,7 @@ class CheckoutFragment : Fragment(R.layout.fragment_checkout) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _fragmentClothBinding = FragmentCheckoutBinding.bind(view)
-        val adapter = CheckoutListAdapter(requireContext())
+        val adapter = CheckoutListAdapter()
 
         fragmentClothBinding.recyclerView.adapter = adapter
         viewModel.selectedItemList.observe(viewLifecycleOwner){
