@@ -4,12 +4,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.app.ActivityCompat.finishAffinity
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.globalaccelerex.mpossdksample.R
 import com.globalaccelerex.mpossdksample.adapter.CatalogItemAdapter
-import com.globalaccelerex.mpossdksample.data.DataSource
 import com.globalaccelerex.mpossdksample.databinding.FragmentCatalogBinding
+import com.globalaccelerex.mpossdksample.viewModel.ItemViewModel
 
 
 class CatalogFragment : Fragment(R.layout.fragment_catalog) {
@@ -21,9 +22,21 @@ class CatalogFragment : Fragment(R.layout.fragment_catalog) {
     private var _fragmentCatalogBinding: FragmentCatalogBinding? = null
     private val fragmentCatalogBinding get() = _fragmentCatalogBinding!!
 
+    private lateinit var adapter: CatalogItemAdapter
+
+    private val viewModel: ItemViewModel by activityViewModels()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _fragmentCatalogBinding = FragmentCatalogBinding.bind(view)
+
+        adapter = CatalogItemAdapter { index ->
+
+            // update item
+            viewModel.updateItem(index)
+            adapter.notifyItemChanged(index)
+
+        }
 
         val userLoggedInStateHandle = findNavController().currentBackStackEntry?.savedStateHandle
 
@@ -36,17 +49,19 @@ class CatalogFragment : Fragment(R.layout.fragment_catalog) {
             }
             true -> {
                 // Initialize data.
-                val catalogItemDataSet = DataSource.loadCatalogListItems()
-
                 val recyclerView = fragmentCatalogBinding.recyclerView
-                val catalogItemAdapter = CatalogItemAdapter(requireContext(), catalogItemDataSet)
-                fragmentCatalogBinding.recyclerView.adapter = catalogItemAdapter
-
+                fragmentCatalogBinding.recyclerView.adapter = adapter
+                viewModel.itemsList.observe(viewLifecycleOwner) { catalogItemList ->
+                    catalogItemList?.let(adapter::submitList)
+                }
+                fragmentCatalogBinding.recyclerView.layoutManager =
+                    LinearLayoutManager(requireContext())
                 // for optimization since size is constant
                 recyclerView.setHasFixedSize(true)
 
             }
         }
+//        fragmentCatalogBinding.
         fragmentCatalogBinding.floatingActionButton.setOnClickListener {
             findNavController().navigate(CatalogFragmentDirections.actionCatalogFragmentToCheckoutFragment())
         }

@@ -1,12 +1,11 @@
 package com.globalaccelerex.mpossdksample.model
 
-import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import java.math.BigDecimal
 
-data class CatalogItem(
+data class CheckoutItem(
     @StringRes val stringResourceTitle: Int,
-    @DrawableRes val imageResourceId: Int,
+//    val totalSingularItemOrdered: Int,
+//    val totalItemPrice: Double
     val itemPrice: BigDecimal,
-    var isAdded: Boolean = false
-)
+    )
