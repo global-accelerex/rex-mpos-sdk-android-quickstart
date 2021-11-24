@@ -1,6 +1,5 @@
 package com.globalaccelerex.mpossdksample.adapter
 
-import android.content.Context
 import android.content.res.Resources
 import android.util.Log
 import android.view.LayoutInflater
@@ -17,7 +16,7 @@ import java.util.*
 class CatalogItemAdapter(
     private var onClick: (Int) -> Unit
 ) : ListAdapter<CatalogItem, CatalogItemAdapter.CatalogItemViewHolder>(CatalogDiffCallback) {
-    inner class CatalogItemViewHolder(
+    class CatalogItemViewHolder private constructor(
         private var binding: CatalogListItemBinding,
         val onClick: (Int) -> Unit
     ) :
@@ -29,34 +28,39 @@ class CatalogItemAdapter(
                 resources.getString(catalogItem.stringResourceTitle)
             binding.catalogItemPrice.text = NumberFormat.getCurrencyInstance(Locale("en", "NG"))
                 .format(
-                    resources.getString(catalogItem.stringResourcePrice).toBigDecimal()
+                    catalogItem.itemPrice
                 )
             binding.catalogItemImage.setImageResource(catalogItem.imageResourceId)
-            if (catalogItem.isAdded) binding.addRemoveCart.text = resources.getString(R.string.remove)
+            if (catalogItem.isAdded) binding.addRemoveCart.text =
+                resources.getString(R.string.remove)
             else binding.addRemoveCart.text = resources.getString(R.string.add)
             binding.addRemoveCart.setOnClickListener {
-                // toggle text i.e if text is "Add" make text remove and vice versa
 
                 onClick(bindingAdapterPosition)
                 Log.i("CatalogItemAdapter", catalogItem.toString())
-
             }
 
         }
+
+        companion object {
+            fun from(parent: ViewGroup, onClick: (Int) -> Unit): CatalogItemViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding = CatalogListItemBinding.inflate(layoutInflater, parent, false)
+                return CatalogItemViewHolder(binding, onClick)
+            }
+        }
+
     }
 
 
-    override fun onBindViewHolder(holder: CatalogItemAdapter.CatalogItemViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CatalogItemViewHolder, position: Int) {
         val catalogItem = getItem(position)
         holder.bind(catalogItem)
     }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatalogItemViewHolder {
-        return CatalogItemViewHolder(
-            CatalogListItemBinding.inflate(LayoutInflater.from(parent.context)),
-            onClick
-        )
+        return CatalogItemViewHolder.from(parent, onClick)
     }
 
     companion object CatalogDiffCallback: DiffUtil.ItemCallback<CatalogItem>() {
@@ -67,5 +71,6 @@ class CatalogItemAdapter(
         override fun areContentsTheSame(oldItem: CatalogItem, newItem: CatalogItem): Boolean {
             return oldItem == newItem
         }
+
     }
 }

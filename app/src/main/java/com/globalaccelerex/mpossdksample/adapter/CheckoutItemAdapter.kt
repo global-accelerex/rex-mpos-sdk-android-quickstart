@@ -1,6 +1,5 @@
 package com.globalaccelerex.mpossdksample.adapter
 
-import android.content.Context
 import android.content.res.Resources
 import android.util.Log
 import android.view.LayoutInflater
@@ -18,21 +17,28 @@ import java.util.*
 class CheckoutListAdapter(
 ) : ListAdapter<CheckoutItem, CheckoutListAdapter.CheckoutViewHolder>(DiffCallback) {
 
-    inner class CheckoutViewHolder(view: View) :
+    class CheckoutViewHolder private constructor(view: View) :
 //    inner class CheckoutViewHolder(private var binding: CheckoutListItemBinding) :
         RecyclerView.ViewHolder(view) {
         private val resources: Resources = view.context.resources
-        val item: TextView = view.findViewById(R.id.item_content)
-        val price: TextView = view.findViewById(R.id.price_content)
+        private val item: TextView = view.findViewById(R.id.item_content)
+        private val price: TextView = view.findViewById(R.id.price_content)
 
         fun bind(checkoutItem: CheckoutItem) {
 //            binding.apply {
             item.text = resources.getText(checkoutItem.stringResourceTitle)
 //                quantityContent.text = checkoutItem.totalSingularItemOrdered.toString()
             price.text = NumberFormat.getCurrencyInstance(Locale("en", "NG"))
-                .format(resources.getString(checkoutItem.stringResourcePrice).toBigDecimal())
+                .format(checkoutItem.itemPrice)
             Log.d("CheckoutListAdapter", price.text.toString())
 //            }
+        }
+        companion object{
+            fun from(parent: ViewGroup): CheckoutViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val view = layoutInflater.inflate(R.layout.checkout_list_item, parent, false)
+                return CheckoutViewHolder(view)
+            }
         }
     }
 
@@ -52,9 +58,7 @@ class CheckoutListAdapter(
         viewType: Int
     ): CheckoutListAdapter.CheckoutViewHolder {
 //        return CheckoutViewHolder(CheckoutListItemBinding.inflate(LayoutInflater.from(parent.context)))
-        return CheckoutViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.checkout_list_item, parent, false)
-        )
+        return CheckoutViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: CheckoutViewHolder, position: Int) {

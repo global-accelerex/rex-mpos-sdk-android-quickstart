@@ -4,18 +4,14 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.core.app.ActivityCompat.finishAffinity
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.globalaccelerex.mpossdksample.R
 import com.globalaccelerex.mpossdksample.adapter.CheckoutListAdapter
 import com.globalaccelerex.mpossdksample.databinding.FragmentCheckoutBinding
 import com.globalaccelerex.mpossdksample.viewModel.ItemViewModel
-import com.globalaccelerex.mpossdksample.viewModel.ItemViewModelFactory
 import java.text.NumberFormat
 import java.util.*
 
@@ -23,25 +19,23 @@ class CheckoutFragment : Fragment(R.layout.fragment_checkout) {
     private var _fragmentClothBinding: FragmentCheckoutBinding? = null
     private val fragmentClothBinding get() = _fragmentClothBinding!!
 
-    private val viewModel: ItemViewModel by activityViewModels {
-        ItemViewModelFactory(requireContext())
-    }
-
+    private val viewModel: ItemViewModel by activityViewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _fragmentClothBinding = FragmentCheckoutBinding.bind(view)
         val adapter = CheckoutListAdapter()
 
         fragmentClothBinding.recyclerView.adapter = adapter
-        viewModel.selectedItemList.observe(viewLifecycleOwner){
+        viewModel.selectedItemList.observe(viewLifecycleOwner) {
             Log.i("checkOutItemList", it.toString())
             adapter.submitList(it)
         }
         fragmentClothBinding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         // observe Total price in Checkout screen
-        viewModel.totalPrice.observe(viewLifecycleOwner){
-            fragmentClothBinding.realTotal.text = NumberFormat.getCurrencyInstance(Locale("en", "NG")).format(it)
+        viewModel.totalPrice.observe(viewLifecycleOwner) {
+            fragmentClothBinding.realTotal.text =
+                NumberFormat.getCurrencyInstance(Locale("en", "NG")).format(it)
         }
         fragmentClothBinding.payButton.setOnClickListener {
             SweetAlertDialog(requireContext(), SweetAlertDialog.SUCCESS_TYPE)

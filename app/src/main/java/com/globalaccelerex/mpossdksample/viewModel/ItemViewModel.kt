@@ -8,7 +8,7 @@ import com.globalaccelerex.mpossdksample.model.CatalogItem
 import com.globalaccelerex.mpossdksample.model.CheckoutItem
 
 
-class ItemViewModel(context: Context) : ViewModel() {
+class ItemViewModel : ViewModel() {
     // List of all catalog items
     private val _itemsList = MutableLiveData<MutableList<CatalogItem>>()
     val itemsList: LiveData<MutableList<CatalogItem>>  get() = _itemsList
@@ -20,12 +20,12 @@ class ItemViewModel(context: Context) : ViewModel() {
             it.isAdded
         }.map {
             // Map the added Catalog Items to Checkout Items
-            CheckoutItem(it.stringResourceTitle, it.stringResourcePrice)
+            CheckoutItem(it.stringResourceTitle, it.itemPrice)
         }
     }
 
     val totalPrice = Transformations.map(selectedItemList) { checkOutItemList ->
-        checkOutItemList.sumOf { (context.resources.getString(it.stringResourcePrice)).toBigDecimal() }
+        checkOutItemList.sumOf { it.itemPrice }
     }
 
     init {
@@ -50,15 +50,5 @@ class ItemViewModel(context: Context) : ViewModel() {
 
         _itemsList.postValue(list)
 
-    }
-}
-
-class ItemViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(ItemViewModel::class.java)) {
-            @Suppress("UNCHECKED_CAST")
-            return ItemViewModel(context) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
     }
 }
