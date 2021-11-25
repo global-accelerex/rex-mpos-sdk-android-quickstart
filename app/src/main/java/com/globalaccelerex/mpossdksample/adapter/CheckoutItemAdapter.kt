@@ -1,7 +1,6 @@
 package com.globalaccelerex.mpossdksample.adapter
 
 import android.content.res.Resources
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -9,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.globalaccelerex.mpossdksample.databinding.CheckoutListItemBinding
 import com.globalaccelerex.mpossdksample.model.CheckoutItem
+import timber.log.Timber
 import java.text.NumberFormat
 import java.util.*
 
@@ -24,7 +24,7 @@ class CheckoutListAdapter :
 //                quantityContent.text = checkoutItem.totalSingularItemOrdered.toString()
             binding.priceContent.text = NumberFormat.getCurrencyInstance(Locale("en", "NG"))
                 .format(checkoutItem.itemPrice)
-            Log.d("CheckoutListAdapter", binding.priceContent.text.toString())
+            Timber.i(binding.priceContent.text.toString())
         }
 
         companion object {
