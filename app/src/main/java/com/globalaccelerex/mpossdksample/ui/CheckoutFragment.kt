@@ -1,7 +1,6 @@
 package com.globalaccelerex.mpossdksample.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.app.ActivityCompat.finishAffinity
 import androidx.fragment.app.Fragment
@@ -12,6 +11,7 @@ import com.globalaccelerex.mpossdksample.R
 import com.globalaccelerex.mpossdksample.adapter.CheckoutListAdapter
 import com.globalaccelerex.mpossdksample.databinding.FragmentCheckoutBinding
 import com.globalaccelerex.mpossdksample.viewModel.ItemViewModel
+import timber.log.Timber
 import java.text.NumberFormat
 import java.util.*
 
@@ -27,7 +27,7 @@ class CheckoutFragment : Fragment(R.layout.fragment_checkout) {
 
         fragmentClothBinding.recyclerView.adapter = adapter
         viewModel.selectedItemList.observe(viewLifecycleOwner) {
-            Log.i("checkOutItemList", it.toString())
+            Timber.i(it.toString())
             adapter.submitList(it)
         }
         fragmentClothBinding.recyclerView.layoutManager = LinearLayoutManager(requireContext())

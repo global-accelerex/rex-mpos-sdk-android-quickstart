@@ -1,11 +1,13 @@
 package com.globalaccelerex.mpossdksample.viewModel
 
-import android.content.Context
-import android.util.Log
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
+import androidx.lifecycle.ViewModel
 import com.globalaccelerex.mpossdksample.data.DataSource.loadCatalogListItems
 import com.globalaccelerex.mpossdksample.model.CatalogItem
 import com.globalaccelerex.mpossdksample.model.CheckoutItem
+import timber.log.Timber
 
 
 class ItemViewModel : ViewModel() {
@@ -30,7 +32,7 @@ class ItemViewModel : ViewModel() {
 
     init {
         _itemsList.value = loadCatalogListItems()
-        Log.i("catalogItemList", itemsList.value.toString())
+        Timber.i(itemsList.value.toString())
     }
 
     fun updateItem(index: Int) {

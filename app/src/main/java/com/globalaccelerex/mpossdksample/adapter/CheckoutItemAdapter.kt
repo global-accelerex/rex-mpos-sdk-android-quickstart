@@ -1,42 +1,37 @@
 package com.globalaccelerex.mpossdksample.adapter
 
 import android.content.res.Resources
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.globalaccelerex.mpossdksample.R
+import com.globalaccelerex.mpossdksample.databinding.CheckoutListItemBinding
 import com.globalaccelerex.mpossdksample.model.CheckoutItem
+import timber.log.Timber
 import java.text.NumberFormat
 import java.util.*
 
-class CheckoutListAdapter(
-) : ListAdapter<CheckoutItem, CheckoutListAdapter.CheckoutViewHolder>(DiffCallback) {
+class CheckoutListAdapter :
+    ListAdapter<CheckoutItem, CheckoutListAdapter.CheckoutViewHolder>(DiffCallback) {
 
-    class CheckoutViewHolder private constructor(view: View) :
-//    inner class CheckoutViewHolder(private var binding: CheckoutListItemBinding) :
-        RecyclerView.ViewHolder(view) {
-        private val resources: Resources = view.context.resources
-        private val item: TextView = view.findViewById(R.id.item_content)
-        private val price: TextView = view.findViewById(R.id.price_content)
+    class CheckoutViewHolder private constructor(private var binding: CheckoutListItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        private val resources: Resources = binding.root.context.resources
 
         fun bind(checkoutItem: CheckoutItem) {
-//            binding.apply {
-            item.text = resources.getText(checkoutItem.stringResourceTitle)
+            binding.itemContent.text = resources.getText(checkoutItem.stringResourceTitle)
 //                quantityContent.text = checkoutItem.totalSingularItemOrdered.toString()
-            price.text = NumberFormat.getCurrencyInstance(Locale("en", "NG"))
+            binding.priceContent.text = NumberFormat.getCurrencyInstance(Locale("en", "NG"))
                 .format(checkoutItem.itemPrice)
-            Log.d("CheckoutListAdapter", price.text.toString())
-//            }
+            Timber.i(binding.priceContent.text.toString())
         }
-        companion object{
+
+        companion object {
             fun from(parent: ViewGroup): CheckoutViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val view = layoutInflater.inflate(R.layout.checkout_list_item, parent, false)
+                val view = CheckoutListItemBinding.inflate(layoutInflater, parent, false)
+
                 return CheckoutViewHolder(view)
             }
         }
@@ -56,8 +51,7 @@ class CheckoutListAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): CheckoutListAdapter.CheckoutViewHolder {
-//        return CheckoutViewHolder(CheckoutListItemBinding.inflate(LayoutInflater.from(parent.context)))
+    ): CheckoutViewHolder {
         return CheckoutViewHolder.from(parent)
     }
 
