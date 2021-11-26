@@ -8,6 +8,7 @@ import com.globalaccelerex.mpossdksample.data.DataSource.loadCatalogListItems
 import com.globalaccelerex.mpossdksample.model.CatalogItem
 import com.globalaccelerex.mpossdksample.model.CheckoutItem
 import timber.log.Timber
+import java.math.BigDecimal
 
 
 class ItemViewModel : ViewModel() {
@@ -26,9 +27,11 @@ class ItemViewModel : ViewModel() {
         }
     }
 
-    val totalPrice = Transformations.map(selectedItemList) { checkOutItemList ->
+    private val _totalPrice = Transformations.map(selectedItemList) { checkOutItemList ->
         checkOutItemList.sumOf { it.itemPrice }
-    }
+    } as MutableLiveData<BigDecimal>
+    val totalPrice: LiveData<BigDecimal>
+        get() = _totalPrice
 
     init {
         _itemsList.value = loadCatalogListItems()
@@ -52,5 +55,10 @@ class ItemViewModel : ViewModel() {
 
         _itemsList.postValue(list)
 
+    }
+
+    fun clearSession() {
+        _itemsList.value = loadCatalogListItems()
+        _totalPrice.value = BigDecimal.valueOf(0)
     }
 }
