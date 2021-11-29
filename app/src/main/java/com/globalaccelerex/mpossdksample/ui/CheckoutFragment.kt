@@ -95,9 +95,7 @@ class CheckoutFragment : Fragment(R.layout.fragment_checkout) {
         val request = PaymentRequest {
             requestType = RequestType.PURCHASE
 //            amount = checkoutAmount
-            viewModel.totalPrice.observe(viewLifecycleOwner) {
-                amount = it.toDouble()
-            }
+            amount = viewModel.totalPrice.value!!.toDouble()
             printReceipt = false
         }
         // Start the payment process
