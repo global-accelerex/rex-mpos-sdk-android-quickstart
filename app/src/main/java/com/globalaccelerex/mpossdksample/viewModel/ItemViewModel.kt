@@ -53,4 +53,8 @@ class ItemViewModel : ViewModel() {
         _itemsList.postValue(list)
 
     }
+
+    fun clearSession() {
+        _itemsList.value = loadCatalogListItems()
+    }
 }

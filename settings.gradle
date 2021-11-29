@@ -3,6 +3,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven {
+            url "https://mymavenrepo.com/repo/yXq29kh09th20s0ibOxf/"
+        }
         jcenter() // Warning: this repository is going to shut down soon
     }
 }
