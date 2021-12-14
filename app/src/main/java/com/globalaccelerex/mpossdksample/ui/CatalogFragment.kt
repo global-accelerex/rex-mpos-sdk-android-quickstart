@@ -34,7 +34,6 @@ class CatalogFragment : Fragment(R.layout.fragment_catalog) {
 
             // update item
             viewModel.updateItem(index)
-            adapter.notifyItemChanged(index)
 
         }
 
@@ -61,7 +60,6 @@ class CatalogFragment : Fragment(R.layout.fragment_catalog) {
 
             }
         }
-//        fragmentCatalogBinding.
         fragmentCatalogBinding.floatingActionButton.setOnClickListener {
             findNavController().navigate(CatalogFragmentDirections.actionCatalogFragmentToCheckoutFragment())
         }
