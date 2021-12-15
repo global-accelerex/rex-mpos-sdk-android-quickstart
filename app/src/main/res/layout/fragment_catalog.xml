@@ -26,6 +26,7 @@
         android:contentDescription="@string/add"
         android:focusable="true"
         app:srcCompat="@drawable/ic_baseline_shopping_cart_24"
+        android:visibility="invisible"
         tools:visibility="visible" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

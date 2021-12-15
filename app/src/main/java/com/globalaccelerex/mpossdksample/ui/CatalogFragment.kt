@@ -11,6 +11,7 @@ import com.globalaccelerex.mpossdksample.R
 import com.globalaccelerex.mpossdksample.adapter.CatalogItemAdapter
 import com.globalaccelerex.mpossdksample.databinding.FragmentCatalogBinding
 import com.globalaccelerex.mpossdksample.viewModel.ItemViewModel
+import java.math.BigDecimal
 
 
 class CatalogFragment : Fragment(R.layout.fragment_catalog) {
@@ -63,7 +64,15 @@ class CatalogFragment : Fragment(R.layout.fragment_catalog) {
         fragmentCatalogBinding.floatingActionButton.setOnClickListener {
             findNavController().navigate(CatalogFragmentDirections.actionCatalogFragmentToCheckoutFragment())
         }
+        viewModel.totalPrice.observe(viewLifecycleOwner) {
+            if (it.equals(BigDecimal.valueOf(0))) {
+                fragmentCatalogBinding.floatingActionButton.visibility = View.INVISIBLE
+            } else
+                fragmentCatalogBinding.floatingActionButton.visibility =
+                    View.VISIBLE
+        }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
