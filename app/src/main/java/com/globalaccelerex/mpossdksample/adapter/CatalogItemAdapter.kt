@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.globalaccelerex.mpossdksample.R
 import com.globalaccelerex.mpossdksample.databinding.CatalogListItemBinding
 import com.globalaccelerex.mpossdksample.model.CatalogItem
@@ -29,7 +30,9 @@ class CatalogItemAdapter(
                 .format(
                     catalogItem.itemPrice
                 )
-            binding.catalogItemImage.setImageResource(catalogItem.imageResourceId)
+            binding.catalogItemImage.load(catalogItem.imageResourceId) {
+                crossfade(true)
+            }
             isAdded(catalogItem)
             binding.addRemoveCart.setOnClickListener {
 
