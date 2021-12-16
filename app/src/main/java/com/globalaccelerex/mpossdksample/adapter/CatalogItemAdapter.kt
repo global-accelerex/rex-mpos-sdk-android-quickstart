@@ -1,12 +1,12 @@
 package com.globalaccelerex.mpossdksample.adapter
 
 import android.content.res.Resources
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.globalaccelerex.mpossdksample.R
 import com.globalaccelerex.mpossdksample.databinding.CatalogListItemBinding
 import com.globalaccelerex.mpossdksample.model.CatalogItem
@@ -30,16 +30,22 @@ class CatalogItemAdapter(
                 .format(
                     catalogItem.itemPrice
                 )
-            binding.catalogItemImage.setImageResource(catalogItem.imageResourceId)
-            if (catalogItem.isAdded) binding.addRemoveCart.text =
-                resources.getString(R.string.remove)
-            else binding.addRemoveCart.text = resources.getString(R.string.add)
+            binding.catalogItemImage.load(catalogItem.imageResourceId) {
+                crossfade(true)
+            }
+            isAdded(catalogItem)
             binding.addRemoveCart.setOnClickListener {
 
                 onClick(bindingAdapterPosition)
-                Log.i("CatalogItemAdapter", catalogItem.toString())
+                isAdded(catalogItem)
             }
 
+        }
+
+        private fun isAdded(catalogItem: CatalogItem) {
+            if (catalogItem.isAdded) binding.addRemoveCart.text =
+                resources.getString(R.string.remove)
+            else binding.addRemoveCart.text = resources.getString(R.string.add)
         }
 
         companion object {
