@@ -57,8 +57,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/username_edit_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:drawableStart="@drawable/ic_person"
                 android:drawablePadding="12dp"
                 android:imeOptions="actionNext"
@@ -90,8 +90,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password_edit_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:drawableStart="@drawable/ic_lock"
                 android:drawablePadding="12dp"
                 android:imeOptions="actionDone"
@@ -115,7 +115,6 @@
             android:minHeight="48dp"
             android:padding="10dp"
             android:text="@string/text_forgot_password"
-            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="@+id/password_input_layout"
             app:layout_constraintTop_toBottomOf="@+id/password_input_layout" />
 
@@ -137,7 +136,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/text_sign_in_social_media"
-            android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="@+id/button_sign_in"
             app:layout_constraintStart_toStartOf="@+id/button_sign_in"
@@ -178,7 +176,6 @@
             android:layout_marginBottom="16dp"
             android:padding="20dp"
             android:text="@string/text_sign_in_signup"
-            android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
